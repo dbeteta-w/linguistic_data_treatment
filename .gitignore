@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Data and stuff
+1050_or_less_vocab_en_LSM_revised.txt
+datos_bilingues/
+datos_monolingues/
+outdated_code/
+
+
