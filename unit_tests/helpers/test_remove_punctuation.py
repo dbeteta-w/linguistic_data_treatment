@@ -9,6 +9,7 @@ class TestRemovePunctuation(unittest.TestCase):
             "Hola que tal": "Hola que tal",
             "Hola, que tal": "Hola que tal",
             "Hola! que tal?": "Hola que tal",
+            "¡Hola!, ¿que tal?": "Hola que tal"
         }
 
         for test, gold in test_golds.items():
