@@ -3,7 +3,7 @@ from typing import Set, Tuple
 from helpers.clean_to_be_compared import clean_to_be_compared
 
 
-def is_repeated(src: str, tgt: str, set_tuple_src_tgt: Set[Tuple[str, str]]):
+def is_repeated(src: str, tgt: str, set_tuple_src_tgt: Set[Tuple[str, str]]) -> bool:
     src_to_be_compared = clean_to_be_compared(src)
     tgt_to_be_compared = clean_to_be_compared(tgt)
     tuple_src_tgt = tuple([src_to_be_compared, tgt_to_be_compared])
