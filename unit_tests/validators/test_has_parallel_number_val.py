@@ -7,8 +7,8 @@ class TestHasParallelNumberVal(unittest.TestCase):
     def test_validator(self):
         test_golds = {
             tuple(["Hola 23", "Hello 23"]): True,
-            tuple(["Hi veintitres", "Hello twenty three"]): True,
-            tuple(["Hi veintitres", "Hello 23"]): True,
+            tuple(["Hola veintitres", "Hello twenty three"]): True,
+            tuple(["Hola veintitres", "Hello 23"]): True,
             tuple(["Hola 23", "Hello 123"]): False,
         }
 
