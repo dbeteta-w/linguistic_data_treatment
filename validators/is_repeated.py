@@ -10,3 +10,10 @@ def is_repeated(src: str, tgt: str, set_tuple_src_tgt: Set[Tuple[str, str]]) -> 
     if tuple_src_tgt in set_tuple_src_tgt:
         return True
     return False
+
+
+def is_text_repeated(text: str, set_texts: Set[str]):
+    text_to_be_compared = clean_to_be_compared(text)
+    if text_to_be_compared in set_texts:
+        return True
+    return False
