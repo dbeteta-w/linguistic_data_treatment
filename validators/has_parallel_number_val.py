@@ -1,7 +1,7 @@
 from text_to_num import alpha2digit
 
 
-def has_parallel_number_val(src: str, tgt: str, src_lang: str, tgt_lang: str, tolerance=0) -> bool:
+def has_parallel_number_val(src: str, tgt: str, src_lang="en", tgt_lang="es", tolerance=0) -> bool:
     src_alpha2digit = alpha2digit(src, src_lang)
     tgt_alpha2digit = alpha2digit(tgt, tgt_lang)
     for number in range(10):
