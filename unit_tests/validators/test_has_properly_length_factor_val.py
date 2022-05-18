@@ -6,8 +6,8 @@ from validators.has_properly_length_factor_val import has_properly_length_factor
 class TestHasProperlyLengthFactorVal(unittest.TestCase):
     def test_validator(self):
         test_golds = {
+            tuple(["Hola amigo", "Hello friend"]): True,
             tuple(["Hola", "Hello"]): True,
-            tuple(["Hi", "Hello"]): True,
             tuple(["Hola", "Hello, how are you doing my friend?"]): False,
             tuple(["Hola, ¿cómo vas amigo mio?", "Hello"]): False,
         }
