@@ -19,7 +19,6 @@ class TestIsRepeated(unittest.TestCase):
 
         for test, gold in test_golds.items():
             src, tgt = test
-            x = is_repeated(src, tgt, test_set)
             self.assertEqual(is_repeated(src, tgt, test_set), gold)
 
 
