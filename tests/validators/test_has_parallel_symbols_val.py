@@ -1,6 +1,6 @@
 import unittest
 
-from validators.has_parallel_symbols_val import has_parallel_symbols_val
+from processes.validators.has_parallel_symbols_val import has_parallel_symbols_val
 
 
 class TestHasParallelSymbolsVal(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from validators.is_repeated import is_repeated
+from processes.validators.is_repeated import is_repeated
 
 
 class TestIsRepeated(unittest.TestCase):

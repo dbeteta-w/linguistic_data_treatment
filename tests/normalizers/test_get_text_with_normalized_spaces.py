@@ -1,6 +1,6 @@
 import unittest
 
-from normalizers.get_text_with_normalized_spaces import get_text_with_normalized_spaces
+from processes.normalizers.get_text_with_normalized_spaces import get_text_with_normalized_spaces
 
 
 class TestGetTextWithNormalizedSpaces(unittest.TestCase):

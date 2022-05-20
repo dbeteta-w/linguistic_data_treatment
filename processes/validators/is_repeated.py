@@ -1,6 +1,6 @@
 from typing import Set, Tuple
 
-from helpers.get_text_to_be_compared import get_text_to_be_compared
+from processes.helpers.get_text_to_be_compared import get_text_to_be_compared
 
 
 def is_repeated(src: str, tgt: str, set_tuple_src_tgt: Set[Tuple[str, str]]) -> bool:

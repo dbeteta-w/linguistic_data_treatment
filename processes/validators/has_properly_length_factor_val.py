@@ -1,4 +1,4 @@
-from helpers.get_text_to_be_compared import get_text_to_be_compared
+from processes.helpers.get_text_to_be_compared import get_text_to_be_compared
 
 
 def has_properly_length_factor_val(src: str, tgt: str, length_factor=2.0, min_len=6) -> bool:

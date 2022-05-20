@@ -1,6 +1,6 @@
 import unittest
 
-from validators.has_a_properly_amount_of_words import has_text_properly_amount_of_words
+from processes.validators.has_a_properly_amount_of_words import has_text_properly_amount_of_words
 
 
 class TestHasAProperlyAmountOfWords(unittest.TestCase):

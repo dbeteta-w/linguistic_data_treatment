@@ -1,6 +1,6 @@
 import unittest
 
-from helpers.get_text_without_punctuation import get_text_without_punctuation
+from processes.helpers.get_text_without_punctuation import get_text_without_punctuation
 
 
 class TestGetTextWithoutPunctuation(unittest.TestCase):

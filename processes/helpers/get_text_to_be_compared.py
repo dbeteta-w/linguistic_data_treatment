@@ -2,7 +2,7 @@ import re
 
 from past.builtins import apply
 
-from helpers.get_text_without_punctuation import get_text_without_punctuation
+from processes.helpers.get_text_without_punctuation import get_text_without_punctuation
 
 
 def get_text_to_be_compared(text: str) -> str:

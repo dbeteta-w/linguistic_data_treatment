@@ -1,6 +1,6 @@
 import unittest
 
-from helpers.get_text_to_be_compared import get_text_to_be_compared
+from processes.helpers.get_text_to_be_compared import get_text_to_be_compared
 
 
 class TestGetTextToBeCompared(unittest.TestCase):

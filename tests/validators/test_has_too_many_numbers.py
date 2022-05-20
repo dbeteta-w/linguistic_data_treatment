@@ -1,6 +1,6 @@
 import unittest
 
-from validators.has_too_many_numbers import has_text_too_many_numbers
+from processes.validators.has_too_many_numbers import has_text_too_many_numbers
 
 
 class TestHasTooManyNumbers(unittest.TestCase):

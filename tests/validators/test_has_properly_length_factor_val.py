@@ -1,6 +1,6 @@
 import unittest
 
-from validators.has_properly_length_factor_val import has_properly_length_factor_val
+from processes.validators.has_properly_length_factor_val import has_properly_length_factor_val
 
 
 class TestHasProperlyLengthFactorVal(unittest.TestCase):

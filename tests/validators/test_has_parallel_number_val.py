@@ -1,6 +1,6 @@
 import unittest
 
-from validators.has_parallel_number_val import has_parallel_number_val
+from processes.validators.has_parallel_number_val import has_parallel_number_val
 
 
 class TestHasParallelNumberVal(unittest.TestCase):

@@ -1,7 +1,7 @@
 from past.builtins import apply
 
-from helpers.get_text_without_punctuation import get_text_without_punctuation
-from normalizers.get_text_with_normalized_spaces import get_text_with_normalized_spaces
+from processes.helpers.get_text_without_punctuation import get_text_without_punctuation
+from processes.normalizers.get_text_with_normalized_spaces import get_text_with_normalized_spaces
 
 
 def has_a_properly_amount_of_words(src: str, tgt: str, min_words=2, max_words=35) -> bool:
