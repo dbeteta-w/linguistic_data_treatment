@@ -1,9 +1,9 @@
 import unittest
 
-from helpers.clean_to_be_compared import clean_to_be_compared
+from helpers.get_text_to_be_compared import get_text_to_be_compared
 
 
-class TestCleanToBeCompared(unittest.TestCase):
+class TestGetTextToBeCompared(unittest.TestCase):
     def test_helper(self):
         test_golds = {
             "Hola que tal": "holaquetal",
@@ -15,7 +15,7 @@ class TestCleanToBeCompared(unittest.TestCase):
         }
 
         for test, gold in test_golds.items():
-            test_corrected = clean_to_be_compared(test)
+            test_corrected = get_text_to_be_compared(test)
             self.assertEqual(test_corrected, gold)
 
 

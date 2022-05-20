@@ -1,9 +1,9 @@
 import unittest
 
-from helpers.remove_punctuation import remove_punctuation
+from helpers.get_text_without_punctuation import get_text_without_punctuation
 
 
-class TestRemovePunctuation(unittest.TestCase):
+class TestGetTextWithoutPunctuation(unittest.TestCase):
     def test_helper(self):
         test_golds = {
             "Hola que tal": "Hola que tal",
@@ -13,7 +13,7 @@ class TestRemovePunctuation(unittest.TestCase):
         }
 
         for test, gold in test_golds.items():
-            test_corrected = remove_punctuation(test)
+            test_corrected = get_text_without_punctuation(test)
             self.assertEqual(test_corrected, gold)
 
 

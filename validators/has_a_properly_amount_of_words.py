@@ -1,8 +1,7 @@
-import re
-
 from past.builtins import apply
 
-from helpers.remove_punctuation import remove_punctuation
+from helpers.get_text_without_punctuation import get_text_without_punctuation
+from normalizers.get_text_with_normalized_spaces import get_text_with_normalized_spaces
 
 
 def has_a_properly_amount_of_words(src: str, tgt: str, min_words=2, max_words=35) -> bool:
@@ -12,9 +11,8 @@ def has_a_properly_amount_of_words(src: str, tgt: str, min_words=2, max_words=35
 
 def has_text_properly_amount_of_words(text: str, min_words=2, max_words=35) -> bool:
     list_of_cleaning_processes = [
-        remove_punctuation,
-        lambda x: re.sub(r"\s+", " ", x),
-        lambda x: x.strip()
+        get_text_without_punctuation,
+        get_text_with_normalized_spaces
     ]
 
     for funct in list_of_cleaning_processes:
