@@ -13,8 +13,8 @@ class TestGetTextWithoutPunctuation(unittest.TestCase):
         }
 
         for test, gold in test_golds.items():
-            test_corrected = get_text_without_punctuation(test)
-            self.assertEqual(test_corrected, gold)
+            test_without_punctuation = get_text_without_punctuation(test)
+            self.assertEqual(test_without_punctuation, gold)
 
 
 if __name__ == '__main__':

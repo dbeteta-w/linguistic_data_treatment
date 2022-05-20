@@ -15,8 +15,8 @@ class TestGetTextToBeCompared(unittest.TestCase):
         }
 
         for test, gold in test_golds.items():
-            test_corrected = get_text_to_be_compared(test)
-            self.assertEqual(test_corrected, gold)
+            test_to_be_compared = get_text_to_be_compared(test)
+            self.assertEqual(test_to_be_compared, gold)
 
 
 if __name__ == '__main__':
