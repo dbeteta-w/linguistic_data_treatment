@@ -1,5 +1,5 @@
 
-def has_parallel_symbols_val(src: str, tgt: str, tolerance=0, symbols_to_check=None):
+def has_parallel_symbols_val(src: str, tgt: str, tolerance=0, symbols_to_check=None) -> bool:
     if symbols_to_check is None:
         symbols_to_check = {'[', ']', '{', '}', '<', '>', '@', '+', '...', '#'}
 
