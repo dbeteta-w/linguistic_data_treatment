@@ -1,4 +1,5 @@
 from enum import Enum
+from typing import Set, Tuple
 
 
 class MetaQuote(Enum):
@@ -201,15 +202,26 @@ MAIN_QUOTES_PER_LANG = {
 
 
 def get_text_with_normalized_quotes(text: str, lang_desired: str) -> str:
-    rest_quotes = {
+    rest_quotes = _get_rest_quotes(lang_desired)
+    amount_quotes, text = _get_amount_quotes_and_replace_wildcard(rest_quotes, text)
+    return _replace_wildcard_with_proper_quotes(amount_quotes, text, lang_desired)
+
+
+def _get_rest_quotes(lang_desired: str) -> Set[str]:
+    return {
         quote for lang, quotes in MAIN_QUOTES_PER_LANG.items() for _, quote in quotes.items() if lang != lang_desired
     }
 
+
+def _get_amount_quotes_and_replace_wildcard(rest_quotes: Set[str], text: str) -> Tuple[int, str]:
     amount_quotes = 0
     for quote in rest_quotes:
         amount_quotes += text.count(quote)
         text = text.replace(quote, str(MetaQuote.FOUND))
+    return amount_quotes, text
 
+
+def _replace_wildcard_with_proper_quotes(amount_quotes: int, text: str, lang_desired: str) -> str:
     amount_replacements = 1
     if amount_quotes == 0:
         return text
