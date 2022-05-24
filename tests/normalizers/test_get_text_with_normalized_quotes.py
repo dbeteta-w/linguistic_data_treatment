@@ -16,8 +16,8 @@ class TestGetTextWithNormalizedQuotes(unittest.TestCase):
         }
 
         for test, gold in test_golds.items():
-            test_without_punctuation = get_text_with_normalized_quotes(test, "es")
-            self.assertEqual(test_without_punctuation, gold)
+            test_with_normalized_quotes = get_text_with_normalized_quotes(test, "es")
+            self.assertEqual(test_with_normalized_quotes, gold)
 
 
 if __name__ == '__main__':
