@@ -6,6 +6,7 @@ from processes.normalizers.get_text_with_normalized_accents import get_text_with
 
 class TestGetTextWithNormalizedAccents(unittest.TestCase):
     def test_normalizer(self):
+        # NFD form (Normalization Form Canonical Decomposition) => accented letters = 2 character
         test_golds = {
             unicodedata.normalize("NFD", "Hola, qué tal"): "Hola, qué tal",
             unicodedata.normalize("NFD", "Hola, que tal te va mañana?"): "Hola, que tal te va mañana?"
