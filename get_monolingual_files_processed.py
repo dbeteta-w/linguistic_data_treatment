@@ -81,7 +81,7 @@ if __name__ == "__main__":
                         help="Extension of the files e.g. txt")
     parser.add_argument("-l", "--lang", type=str,
                         metavar="", required=True,
-                        help="Language ISO 639-1 Code e.g en")
+                        help="Language ISO 639-1 Code e.g. en")
     parser.add_argument("-c", "--cpus", type=int,
                         metavar="", required=True,
                         help="Amount of cpus desired to use in the execution."
