@@ -75,26 +75,21 @@ if __name__ == "__main__":
     )
     parser.add_argument("-pi", "--input", type=str,
                         metavar="", required=True,
-                        help="Path to the input files"
-                        )
+                        help="Path to the input files")
     parser.add_argument("-e", "--extension", type=str,
                         metavar="", required=True,
-                        help="Extension of the files e.g. txt"
-                        )
-    parser.add_argument("-l", "--lang", type=str, metavar="",
-                        required=True,
-                        help="Language ISO 639-1 Code e.g en"
-                        )
-    parser.add_argument("-c", "--cpus", type=int, metavar="",
-                        required=True,
+                        help="Extension of the files e.g. txt")
+    parser.add_argument("-l", "--lang", type=str,
+                        metavar="", required=True,
+                        help="Language ISO 639-1 Code e.g en")
+    parser.add_argument("-c", "--cpus", type=int,
+                        metavar="", required=True,
                         help="Amount of cpus desired to use in the execution."
-                             "Recommendation: use a max of 2/3 of the total"
-                        )
-    parser.add_argument("-po", "--output", type=str, metavar="",
-                        required=True,
-                        help="Path to the desired output place"
-                        )
-    # Check the proper function of the script and add th optional arguments
+                             " Recommendation: use a max of 2/3 of the total")
+    parser.add_argument("-po", "--output", type=str,
+                        metavar="", required=True,
+                        help="Path to the desired output place")
+
     args = parser.parse_args()
 
     set_texts = set()
