@@ -72,7 +72,7 @@ def _validate(src: str, src_lang: str, tgt: str, tgt_lang: str) -> bool:
             flog.write(src + "|||" + tgt + "|||has_parallel_number_val\n")
             return False
         if is_repeated(src, tgt, set_texts):
-            flog.write(src + "|||" + tgt + "|||is_text_repeated\n")
+            flog.write(src + "|||" + tgt + "|||is_repeated\n")
             return False
         else:
             src_to_be_compared, tgt_to_be_compared = get_text_to_be_compared(src), get_text_to_be_compared(tgt)
