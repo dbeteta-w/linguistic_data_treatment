@@ -131,8 +131,8 @@ dmypy.json
 # Data and stuff
 models/
 vocabularies/
-datos_bilingues/
-datos_monolingues/
+monolingual_data/
+bilingual_data/
 outdated_code/
 .idea/
 
