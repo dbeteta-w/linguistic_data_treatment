@@ -14,7 +14,7 @@ class TestHasParallelNumberVal(unittest.TestCase):
 
         for test, gold in test_golds.items():
             src, tgt = test
-            self.assertEqual(has_parallel_number_val(src, tgt, "es", "en"), gold)
+            self.assertEqual(has_parallel_number_val(src, "es", tgt, "en"), gold)
 
 
 if __name__ == '__main__':
