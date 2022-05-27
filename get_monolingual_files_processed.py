@@ -102,10 +102,16 @@ if __name__ == "__main__":
     pretrained_model = "models/lid.176.bin"
     FASTTEXT_MODEL = fasttext.load_model(os.path.abspath(pretrained_model))
 
-    MIN_WORDS = int(args.optional[0]) if int(args.optional[0]) != -1 else 2
-    MAX_WORDS = int(args.optional[1]) if int(args.optional[1]) != -1 else 35
-    ALPHA_VALUE = int(args.optional[2]) if int(args.optional[2]) != -1 else 2
-    MIN_PROBABILITY = float(args.optional[3]) if float(args.optional[3]) != -1 else 0.4
+    MIN_WORDS = 2
+    MAX_WORDS = 35
+    ALPHA_VALUE = 2
+    MIN_PROBABILITY = 0.4
+
+    if args.optional:
+        MIN_WORDS = int(args.optional[0]) if int(args.optional[0]) != -1 else MIN_WORDS
+        MAX_WORDS = int(args.optional[1]) if int(args.optional[1]) != -1 else MAX_WORDS
+        ALPHA_VALUE = int(args.optional[2]) if int(args.optional[2]) != -1 else ALPHA_VALUE
+        MIN_PROBABILITY = float(args.optional[3]) if float(args.optional[3]) != -1 else MIN_PROBABILITY
 
     if "." in args.extension:
         path_files_to_be_processed = glob(args.input + "/*" + args.extension)
