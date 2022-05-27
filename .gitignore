@@ -129,9 +129,10 @@ dmypy.json
 .pyre/
 
 # Data and stuff
-data/
 models/
-vocabularies/
+classifier/
+translator/
+origin_data/
 outdated_code/
 files_processed/
 .idea/
