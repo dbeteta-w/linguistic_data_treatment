@@ -49,13 +49,13 @@ def _normalize(text: str, lang: str) -> str:
 
 def _validate(text: str, lang: str) -> bool:
     with open(args.output + "/" + lang + "_not_valid_texts.txt", "a", encoding="utf-8") as flog:
-        if not has_text_properly_amount_of_words(text):
+        if not has_text_properly_amount_of_words(text, MIN_WORDS, MAX_WORDS):
             flog.write(text + "|||has_text_properly_amount_of_words\n")
             return False
-        if has_text_too_many_numbers(text):
+        if has_text_too_many_numbers(text, ALPHA_VALUE):
             flog.write(text + "|||has_text_too_many_numbers\n")
             return False
-        if not is_text_in_the_accurate_language(text, lang, fasttext_model):
+        if not is_text_in_the_accurate_language(text, lang, FASTTEXT_MODEL, MIN_PROBABILITY):
             flog.write(text + "|||is_text_in_the_accurate_language\n")
             return False
         if is_text_repeated(text, set_texts):
@@ -70,9 +70,7 @@ def _validate(text: str, lang: str) -> bool:
 if __name__ == "__main__":
 
     start = time.time()
-    parser = argparse.ArgumentParser(
-        description="Normalize and validate monolingual files"
-    )
+    parser = argparse.ArgumentParser(description="Normalize and validate monolingual files")
     parser.add_argument("-pi", "--input", type=str,
                         metavar="", required=True,
                         help="Path to the input files")
@@ -89,12 +87,25 @@ if __name__ == "__main__":
     parser.add_argument("-po", "--output", type=str,
                         metavar="", required=True,
                         help="Path to the desired output place")
+    parser.add_argument("-opt", "--optional",
+                        metavar="", required=False, nargs=4,
+                        help="Introduce the values separated by space => 2 35 2 0.4\n"
+                             "1. Minimum words => has_text_properly_amount_of_words\n"
+                             "2. Maximum words => has_text_properly_amount_of_words\n"
+                             "3. Alpha value => ---- has_text_too_many_numbers ----\n"
+                             "4. Min probability => is_text_in_the_accurate_language\n"
+                             "If you want the default value just introduce -1 in the desired variable => 2 35 -1 0.5")
 
     args = parser.parse_args()
 
     set_texts = set()
     pretrained_model = "models/lid.176.bin"
-    fasttext_model = fasttext.load_model(os.path.abspath(pretrained_model))
+    FASTTEXT_MODEL = fasttext.load_model(os.path.abspath(pretrained_model))
+
+    MIN_WORDS = int(args.optional[0]) if int(args.optional[0]) != -1 else 2
+    MAX_WORDS = int(args.optional[1]) if int(args.optional[1]) != -1 else 35
+    ALPHA_VALUE = int(args.optional[2]) if int(args.optional[2]) != -1 else 2
+    MIN_PROBABILITY = float(args.optional[3]) if float(args.optional[3]) != -1 else 0.4
 
     if "." in args.extension:
         path_files_to_be_processed = glob(args.input + "/*" + args.extension)
@@ -106,7 +117,7 @@ if __name__ == "__main__":
         list_of_abs_path.append(os.path.abspath(file))
         print(file)
 
-    main_function = partial(get_monolingual_files_processed, args.lang)
+    main_function = partial(get_monolingual_files_processed, args.lang.lower())
 
     with Pool(processes=args.cpus) as p:
         p.map(main_function, list_of_abs_path)
