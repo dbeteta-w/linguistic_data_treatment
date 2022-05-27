@@ -70,31 +70,40 @@ def _validate(text: str, lang: str) -> bool:
 if __name__ == "__main__":
 
     start = time.time()
-    parser = argparse.ArgumentParser(description="Normalize and validate monolingual files")
-    parser.add_argument("-pi", "--input", type=str,
-                        metavar="", required=True,
-                        help="Path to the input files")
-    parser.add_argument("-e", "--extension", type=str,
-                        metavar="", required=True,
-                        help="Extension of the files e.g. txt")
-    parser.add_argument("-l", "--lang", type=str,
-                        metavar="", required=True,
-                        help="Language ISO 639-1 Code e.g. en")
-    parser.add_argument("-c", "--cpus", type=int,
-                        metavar="", required=True,
-                        help="Amount of cpus desired to use in the execution."
-                             " Recommendation: use a max of 2/3 of the total")
-    parser.add_argument("-po", "--output", type=str,
-                        metavar="", required=True,
-                        help="Path to the desired output place")
-    parser.add_argument("-opt", "--optional",
-                        metavar="", required=False, nargs=4,
-                        help="Introduce the values separated by space => 2 35 2 0.4\n"
-                             "1. Minimum words => has_text_properly_amount_of_words\n"
-                             "2. Maximum words => has_text_properly_amount_of_words\n"
-                             "3. Alpha value => ---- has_text_too_many_numbers ----\n"
-                             "4. Min probability => is_text_in_the_accurate_language\n"
-                             "If you want the default value just introduce -1 in the desired variable => 2 35 -1 0.5")
+    parser = argparse.ArgumentParser(
+        description="Normalize and validate monolingual files"
+    )
+    parser.add_argument(
+        "-pi", "--input", type=str, required=True,
+        help="Path to the input files"
+    )
+    parser.add_argument(
+        "-e", "--extension", type=str, required=True,
+        help="Extension of the files => txt"
+    )
+    parser.add_argument(
+        "-l", "--lang", type=str, required=True,
+        help="Language ISO 639-1 Code => en"
+    )
+    parser.add_argument(
+        "-c", "--cpus", type=int, required=True,
+        help="Amount of cpus desired to use in the execution.\n"
+             "Recommendation: use a max of 2/3 of the total"
+    )
+    parser.add_argument(
+        "-po", "--output", type=str, required=True,
+        help="Path to the desired output place"
+    )
+    parser.add_argument(
+        "-opt", "--optional", required=False, nargs=4,
+        metavar=("MIN_WORDS", "MAX_WORDS", "ALPHA", "MIN_PROB"),
+        help="Introduce the values separated by space => 2 35 2 0.4\n"
+             "1. Minimum words => has_text_properly_amount_of_words\n"
+             "2. Maximum words => has_text_properly_amount_of_words\n"
+             "3. Alpha value => ---- has_text_too_many_numbers ----\n"
+             "4. Min probability => is_text_in_the_accurate_language\n"
+             "If you want the default value just introduce -1 in the desired variable => 2 35 -1 0.5"
+    )
 
     args = parser.parse_args()
 
@@ -102,10 +111,8 @@ if __name__ == "__main__":
     pretrained_model = "models/lid.176.bin"
     FASTTEXT_MODEL = fasttext.load_model(os.path.abspath(pretrained_model))
 
-    MIN_WORDS = 2
-    MAX_WORDS = 35
-    ALPHA_VALUE = 2
-    MIN_PROBABILITY = 0.4
+    # By default values
+    MIN_WORDS, MAX_WORDS, ALPHA_VALUE, MIN_PROBABILITY = 2, 35, 2, 0.4
 
     if args.optional:
         MIN_WORDS = int(args.optional[0]) if int(args.optional[0]) != -1 else MIN_WORDS
