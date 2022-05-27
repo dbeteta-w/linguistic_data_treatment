@@ -2,8 +2,7 @@ import re
 
 
 def has_too_many_numbers(src: str, tgt: str, alpha=2) -> bool:
-    return not has_text_too_many_numbers(src, alpha) \
-           and not has_text_too_many_numbers(tgt, alpha)
+    return has_text_too_many_numbers(src, alpha) or has_text_too_many_numbers(tgt, alpha)
 
 
 def has_text_too_many_numbers(text: str, alpha=2) -> bool:
