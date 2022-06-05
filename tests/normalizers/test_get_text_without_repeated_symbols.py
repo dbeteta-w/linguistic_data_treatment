@@ -6,6 +6,7 @@ from processes.normalizers.get_text_without_repeated_symbols import get_text_wit
 class TestGetTextWithoutRepeatedSymbols(unittest.TestCase):
     def test_normalizer(self):
         test_golds = {
+            "": "",
             "Hola que tal": "Hola que tal",
             "Hola,, que tal": "Hola, que tal",
             "Hola que tal..": "Hola que tal.",
