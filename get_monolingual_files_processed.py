@@ -79,7 +79,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-e", "--extension", type=str, required=True,
-        help="Extension of the files => txt"
+        choices=[".tsv", ".csv"],
+        help="Extension of the files"
     )
     parser.add_argument(
         "-l", "--lang", type=str, required=True,
@@ -96,7 +97,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-opt", "--optional", required=False, nargs=4,
-        metavar=("MIN_WORDS", "MAX_WORDS", "ALPHA", "MIN_PROB"),
+        metavar=("MIN_WORDS", "MAX_WORDS", "ALPHA_VALUE", "MIN_PROB"),
         help="Introduce the values separated by space => 2 35 2 0.4\n"
              "1. Minimum words => has_text_properly_amount_of_words\n"
              "2. Maximum words => has_text_properly_amount_of_words\n"
@@ -120,10 +121,7 @@ if __name__ == "__main__":
         ALPHA_VALUE = int(args.optional[2]) if int(args.optional[2]) != -1 else ALPHA_VALUE
         MIN_PROBABILITY = float(args.optional[3]) if float(args.optional[3]) != -1 else MIN_PROBABILITY
 
-    if "." in args.extension:
-        path_files_to_be_processed = glob(args.input + "/*" + args.extension)
-    else:
-        path_files_to_be_processed = glob(args.input + "/*." + args.extension)
+    path_files_to_be_processed = glob(args.input + "/*" + args.extension)
 
     list_of_abs_path = []
     for file in path_files_to_be_processed:
