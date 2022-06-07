@@ -30,10 +30,10 @@ def get_bilingual_files_processed(src_lang: str, tgt_lang: str, path_to_file: st
     with open(path_to_file, "r", encoding="utf-8") as fread, \
             open(args.output + "/output_bilingual_processed.txt", "a", encoding="utf-8") as fwrite:
         for text in fread:
-            src, tgt = text.split(args.separator)
+            src, tgt = text.split(SEPARATOR)
             src_normalized, tgt_normalized = _normalize(src, src_lang), _normalize(tgt, tgt_lang)
             if _validate(src_normalized, src_lang, tgt_normalized, tgt_lang):
-                fwrite.write(src_normalized + args.separator + tgt_normalized + "\n")
+                fwrite.write(src_normalized + SEPARATOR + tgt_normalized + "\n")
 
 
 def _normalize(text: str, lang: str) -> str:
@@ -92,11 +92,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-e", "--extension", type=str, required=True,
-        help="Extension of the files => csv"
-    )
-    parser.add_argument(
-        "-s", "--separator", type=str, required=True,
-        help="Separator used to differentiate src from tgt => ','"
+        choices=[".tsv", ".csv"],
+        help="Extension of the files"
     )
     parser.add_argument(
         "-sc", "--srccode", type=str, required=True,
@@ -150,10 +147,8 @@ if __name__ == "__main__":
         TOLERANCE_SYMBOLS = float(args.optional[5]) if float(args.optional[5]) != -1 else TOLERANCE_SYMBOLS
         TOLERANCE_NUMBERS = float(args.optional[6]) if float(args.optional[6]) != -1 else TOLERANCE_NUMBERS
 
-    if "." in args.extension:
-        path_files_to_be_processed = glob(args.input + "/*" + args.extension)
-    else:
-        path_files_to_be_processed = glob(args.input + "/*." + args.extension)
+    path_files_to_be_processed = glob(args.input + "/*" + args.extension)
+    SEPARATOR = "\t" if args.extension == ".tsv" else ","
 
     list_of_abs_path = []
     for file in path_files_to_be_processed:
