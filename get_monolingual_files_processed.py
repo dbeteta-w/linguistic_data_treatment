@@ -14,7 +14,7 @@ from processes.normalizers.get_text_without_tags import get_text_without_tags
 from processes.normalizers.get_text_without_initial_index import get_text_without_initial_index
 from processes.normalizers.get_text_with_normalized_quotes import get_text_with_normalized_quotes
 from processes.normalizers.get_text_with_normalized_spaces import get_text_with_normalized_spaces
-from processes.normalizers.get_text_with_normalized_accents import get_text_with_normalized_accents
+from processes.normalizers.get_text_with_normalized_unicode_characters import get_text_with_normalized_unicode_characters
 from processes.normalizers.get_text_without_repeated_symbols import get_text_without_repeated_symbols
 
 from processes.validators.is_repeated import is_text_repeated
@@ -36,7 +36,7 @@ def _normalize(text: str, lang: str) -> str:
     list_of_normalizers = [
         get_text_without_initial_index,
         get_text_without_tags,
-        get_text_with_normalized_accents,
+        get_text_with_normalized_unicode_characters,
         get_text_without_repeated_symbols,
         get_text_with_normalized_spaces
     ]
