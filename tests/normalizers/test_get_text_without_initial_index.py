@@ -12,6 +12,7 @@ class TestGetTextWithoutInitialIndex(unittest.TestCase):
             "98,Hola que tal": "Hola que tal",
             "98|Hola que tal": "Hola que tal",
             "98\tHola que tal": "Hola que tal",
+            "98.Hola que tal": "Hola que tal"
         }
 
         for test, gold in test_golds.items():
