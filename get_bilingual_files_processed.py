@@ -28,7 +28,7 @@ from processes.validators.has_a_properly_amount_of_words import has_a_properly_a
 
 def get_bilingual_files_processed(src_lang: str, tgt_lang: str, path_to_file: str) -> None:
     with open(path_to_file, "r", encoding="utf-8") as fread, \
-            open(args.output + "/output_bilingual_processed.txt", "a", encoding="utf-8") as fwrite:
+            open(args.output + "/output_bilingual_processed" + args.extension, "a", encoding="utf-8") as fwrite:
         for text in fread:
             src, tgt = text.split(SEPARATOR)
             src_normalized, tgt_normalized = _normalize(src, src_lang), _normalize(tgt, tgt_lang)
